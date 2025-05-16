@@ -135,6 +135,22 @@ def cleanup():
         flash(f'Error during cleanup: {str(e)}', 'error')
     return redirect(url_for('index'))
 
+@app.route('/secret1')
+def secret1():
+    return render_template('secret1.html')
+
+@app.route('/secret2')
+def secret2():
+    return render_template('secret2.html')
+
+@app.route('/secret3')
+def secret3():
+    return render_template('secret3.html')
+
+@app.route('/secret4')
+def secret4():
+    return render_template('secret4.html')
+
 # Run the Flask App
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
