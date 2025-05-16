@@ -1,7 +1,7 @@
 /* Global Styling */
 body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(135deg, #ff69b4, #7fffd4, #ffd700);
+    background: linear-gradient(135deg, #d4a373, #264653, #e9c46a);
     margin: 0;
     padding: 20px 0 0 0;
     color: #333333;
@@ -14,14 +14,14 @@ body {
 
 /* Animated Gradient Background */
 @keyframes crazyColors {
-    0% { background: #ff69b4; }
-    33% { background: #7fffd4; }
-    66% { background: #ffd700; }
-    100% { background: #ff69b4; }
+    0% { background: #d4a373; }
+    33% { background: #264653; }
+    66% { background: #e9c46a; }
+    100% { background: #d4a373; }
 }
 
 body {
-    background: #ff69b4;
+    background: #d4a373;
     animation: crazyColors 4s linear infinite;
 }
 
@@ -30,8 +30,8 @@ body {
     position: absolute;
     top: 15px;
     left: 15px;
-    background-color: rgba(255, 87, 34, 0.9);
-    color: #ffffff;
+    background-color: rgba(38, 70, 83, 0.9);
+    color: #e9c46a;
     padding: 15px 25px;
     border-radius: 20px;
     font-size: 1.5em;
@@ -41,7 +41,7 @@ body {
     align-items: center;
     gap: 5px;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-    border: 3px dashed #ff4500;
+    border: 3px dashed #2a9d8f;
     animation: spin 6s infinite linear;
 }
 
@@ -54,7 +54,7 @@ body {
 .subtle-converter {
     margin-top: 5px;
     padding: 8px;
-    background-color: #32cd32;
+    background-color: #2a9d8f;
     border-radius: 12px;
     display: flex;
     gap: 5px;
@@ -67,7 +67,7 @@ body {
     margin: 2px;
     padding: 8px;
     background-color: #ffffff;
-    border: 2px solid #ff4500;
+    border: 2px solid #e9c46a;
     color: #333333;
     border-radius: 8px;
     width: 80px;
@@ -82,11 +82,11 @@ body {
 /* Container Styling */
 .container {
     text-align: center;
-    background: #ffdab9;
+    background: #f4a261;
     padding: 50px;
     border-radius: 30px;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-    border: 5px solid #ff4500;
+    border: 5px solid #2a9d8f;
     margin-top: 20px;
     transition: all 0.3s ease;
 }
@@ -98,8 +98,8 @@ body {
 /* Header Styling */
 header h1 {
     font-size: 3.5em;
-    color: #ff4500;
-    text-shadow: 3px 3px 0px #32cd32, -3px -3px 0px #ff69b4;
+    color: #2a9d8f;
+    text-shadow: 3px 3px 0px #e9c46a, -3px -3px 0px #264653;
     transition: transform 0.3s ease;
     animation: bounce 2s infinite;
 }
@@ -123,7 +123,7 @@ header p {
 /* Catchphrase Styling */
 .catchphrase {
     font-size: 1.8em;
-    color: #ff4500;
+    color: #2a9d8f;
     margin: 15px 0;
     font-weight: bold;
     animation: wobble 3s infinite;
@@ -138,8 +138,8 @@ header p {
 input[type="file"] {
     margin: 12px 0;
     padding: 14px;
-    background-color: #ff6347;
-    border: 3px dashed #32cd32;
+    background-color: #e76f51;
+    border: 3px dashed #2a9d8f;
     color: #ffffff;
     border-radius: 15px;
     width: 80%;
@@ -147,12 +147,12 @@ input[type="file"] {
 }
 
 input[type="file"]:hover {
-    background-color: #32cd32;
-    border-color: #ff6347;
+    background-color: #2a9d8f;
+    border-color: #e76f51;
 }
 
 button {
-    background: linear-gradient(135deg, #ff6347, #32cd32);
+    background: linear-gradient(135deg, #e76f51, #2a9d8f);
     color: #ffffff;
     padding: 16px 35px;
     margin: 20px 0;
@@ -164,14 +164,14 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #32cd32, #ff6347);
+    background: linear-gradient(135deg, #2a9d8f, #e76f51);
     transform: scale(1.1);
 }
 
 /* Footer Styling */
 footer p {
     margin-top: 20px;
-    color: #ff6347;
+    color: #e76f51;
     font-size: 1em;
     text-align: center;
     font-weight: bold;
@@ -188,23 +188,16 @@ footer p {
 
 /* Drag and Drop Area */
 .drop-area {
-    border: 4px dotted #ff6347;
+    border: 4px dotted #e76f51;
     padding: 35px;
     margin: 20px 0;
     border-radius: 20px;
-    background-color: #32cd32;
+    background-color: #2a9d8f;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    animation: shake 1s infinite;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
 }
 
 .drop-area:hover {
-    background-color: #ffd700;
+    background-color: #e9c46a;
     transform: scale(1.1);
 }
 
@@ -220,7 +213,7 @@ footer p {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #ff4500;
+    background-color: #264653;
     color: #ffffff;
     padding: 18px 35px;
     border-radius: 12px;
