@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extracted Files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Extracted Files</h1>
+            <p>Click to download each file:</p>
+        </header>
+        <ul>
+            {% for file, size in file_list %}
+                <li>
+                    {% if file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.gif') %}
+                        <span class="file-icon">🖼️</span>
+                    {% elif file.endswith('.txt') or file.endswith('.md') %}
+                        <span class="file-icon">📄</span>
+                    {% elif file.endswith('.pdf') %}
+                        <span class="file-icon">📑</span>
+                    {% elif file.endswith('.zip') %}
+                        <span class="file-icon">📦</span>
+                    {% else %}
+                        <span class="file-icon">📁</span>
+                    {% endif %}
+                    <a href="{{ url_for('download_file', extract_id=extract_id, filename=file) }}">{{ file }}</a>
+                    <span class="file-size">({{ (size / 1024)|round(2) }} KB)</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <footer>
+            <p>Powered by Solana | Fast and Secure File Extraction</p>
+        </footer>
+    </div>
+</body>
+</html>

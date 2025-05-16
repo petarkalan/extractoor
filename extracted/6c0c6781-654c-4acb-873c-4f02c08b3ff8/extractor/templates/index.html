@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extractoor - Retardio Themed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Solana Price Ticker
+        let solanaPrice = 0;
+
+        async function updateSolanaPrice() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd,eur,gbp');
+                const data = await response.json();
+                solanaPrice = data.solana.usd;
+                document.getElementById('solana-price').textContent = `$${solanaPrice}`;
+                convertSolana(); 
+            } catch (error) {
+                console.error('Error fetching Solana price:', error);
+            }
+        }
+
+        // Update the converted value in real-time
+        function convertSolana() {
+            const amount = parseFloat(document.getElementById('sol-amount').value) || 0;
+            const currency = document.getElementById('fiat-select').value;
+            let convertedValue = 0;
+
+            if (currency === 'USD') {
+                convertedValue = amount * solanaPrice;
+            } else if (currency === 'EUR') {
+                convertedValue = amount * (solanaPrice * 0.94);
+            } else if (currency === 'GBP') {
+                convertedValue = amount * (solanaPrice * 0.81);
+            }
+
+            document.getElementById('converted-value').textContent = `${convertedValue.toFixed(2)} ${currency}`;
+        }
+
+        setInterval(updateSolanaPrice, 10000);
+        updateSolanaPrice();
+
+        // Background Music Control
+        function toggleMusic() {
+            const music = document.getElementById("bg-music");
+            const musicButton = document.getElementById("music-button");
+            if (music.paused) {
+                music.play();
+                musicButton.textContent = "🔊 Mute";
+            } else {
+                music.pause();
+                musicButton.textContent = "🔈 Unmute";
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bg-music" loop autoplay>
+        <source src="{{ url_for('static', filename='music/goofy.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="music-button" onclick="toggleMusic()">🔊 Mute</button>
+
+    <!-- Solana Price Ticker with Subtle Converter -->
+    <div class="ticker">
+        💲 Solana: <span id="solana-price">Loading...</span>
+        <div class="subtle-converter">
+            <input type="number" id="sol-amount" placeholder="Amount" oninput="convertSolana()">
+            <select id="fiat-select" onchange="convertSolana()">
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+            </select>
+            <p id="converted-value">0.00 USD</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="wiggle">🌌 Extractoor</h1>
+            <p class="catchphrase bounce">The market extracts from you, now you extract from it.</p>
+            <p>Upload ZIP files to extract or convert TXT to PDF with a chaotic touch!</p>
+        </header>
+
+        <!-- Extraction Section -->
+        <div class="drop-area">
+            <h2 class="shake">🗂️ File Extraction</h2>
+            <p>Drag & Drop Files Here</p>
+            <p>or</p>
+            <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" id="file-input" name="file" accept=".zip" multiple required>
+                <button type="submit" class="wiggle-button">Upload & Extract</button>
+            </form>
+        </div>
+
+        <!-- File Converter -->
+        <div class="converter">
+            <h2 class="shake">📄 TXT to PDF Converter</h2>
+            <form action="/convert" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".txt" required>
+                <button type="submit" class="wiggle-button">Convert to PDF</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>Powered by Extractoor | Turning the tables on the market, one file at a time.</p>
+            <p class="credit">Made by kalancc</p>
+        </footer>
+    </div>
+</body>
+</html>
